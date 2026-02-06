@@ -6,7 +6,10 @@
         boolean isAce
 
     toString()
-
+    calculateValue()
+    getValue()
+    isAce()
+    aceValue()
 */
 
 public class Card {
@@ -18,10 +21,26 @@ public class Card {
     public Card(String rank, String suit) {
         this.rank = rank;
         this.suit = suit;
+        this.value = this.calculateValue();
     }
         
     @Override
     public String toString() {
         return rank + " " + suit;
+    }
+
+    public final int calculateValue() {
+        if (
+            rank.equals("K") ||
+            rank.equals("Q") ||
+            rank.equals("J")
+        ) return 10;
+
+        if (rank.equals("A")) return 11;
+        return Integer.parseInt(rank);
+    }
+
+    public int getValue() {
+        return this.value;
     }
 }

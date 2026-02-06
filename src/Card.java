@@ -4,12 +4,14 @@
         String suit
         int value
         boolean isAce
+        boolean isOpen
 
     toString()
     calculateValue()
     getValue()
     isAce()
-    aceValue()
+    aceValue()**
+    setisOpen()
 */
 
 public class Card {
@@ -17,6 +19,7 @@ public class Card {
     private String suit;
     private int value;
     private boolean isAce = false;
+    private boolean isOpen = true;
 
     public Card(String rank, String suit) {
         this.rank = rank;
@@ -27,7 +30,8 @@ public class Card {
         
     @Override
     public String toString() {
-        return rank + " " + suit;
+        if (isOpen) return rank + suit;
+        else return "??";
     }
 
     public final int calculateValue() {
@@ -47,5 +51,9 @@ public class Card {
 
     public boolean isAce() {
         return this.isAce;
+    }
+
+    public void setIsOpen(boolean state) {
+        this.isOpen = state;
     }
 }

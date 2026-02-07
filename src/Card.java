@@ -1,7 +1,7 @@
 /* 
     attributes
         String rank
-        String suit
+        Suit suit
         int value
         boolean isAce
         boolean isOpen
@@ -15,34 +15,34 @@
 */
 
 public class Card {
-    private String rank;
-    private String suit;
+    private String rankA;
+    private Suit suit;
     private int value;
     private boolean isAce = false;
     private boolean isOpen = true;
 
-    public Card(String rank, String suit) {
-        this.rank = rank;
+    public Card(String rankA, Suit suit) {
+        this.rankA = rankA;
         this.suit = suit;
         this.value = this.calculateValue();
-        if (this.rank.equals("A")) this.isAce = true;
+        if (this.rankA.equals("A")) this.isAce = true;
     }
         
     @Override
     public String toString() {
-        if (isOpen) return rank + suit;
+        if (isOpen) return rankA + " " + suit.getSymbol();
         else return "??";
     }
 
     public final int calculateValue() {
         if (
-            rank.equals("K") ||
-            rank.equals("Q") ||
-            rank.equals("J")
+            rankA.equals("K") ||
+            rankA.equals("Q") ||
+            rankA.equals("J")
         ) return 10;
 
-        if (rank.equals("A")) return 11;
-        return Integer.parseInt(rank);
+        if (rankA.equals("A")) return 11;
+        return Integer.parseInt(rankA);
     }
 
     public int getValue() {

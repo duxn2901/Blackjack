@@ -15,41 +15,42 @@
 */
 
 public class Card {
-    private String rankA;
+    private Rank rank;
     private Suit suit;
     private int value;
     private boolean isAce = false;
     private boolean isOpen = true;
 
-    public Card(String rankA, Suit suit) {
-        this.rankA = rankA;
+    public Card(Rank rank, Suit suit) {
+        this.rank = rank;
         this.suit = suit;
         this.value = this.calculateValue();
-        if (this.rankA.equals("A")) this.isAce = true;
+        if (this.rank == Rank.ACE) this.isAce = true;
     }
         
     @Override
     public String toString() {
-        if (isOpen) return rankA + " " + suit.getSymbol();
+        if (isOpen) return rank.getAnnotation() + " " + suit.getSymbol();
         else return "??";
     }
 
     public final int calculateValue() {
         if (
-            rankA.equals("K") ||
-            rankA.equals("Q") ||
-            rankA.equals("J")
+            rank == Rank.KING ||
+            rank == Rank.QUEEN ||
+            rank == Rank.JACK
         ) return 10;
 
-        if (rankA.equals("A")) return 11;
-        return Integer.parseInt(rankA);
+        if (isAce) return 1;
+        
+        return Integer.parseInt(rank.getAnnotation());
     }
 
     public int getValue() {
         return this.value;
     }
 
-    public boolean isAce() {
+    public boolean getisAce() {
         return this.isAce;
     }
 

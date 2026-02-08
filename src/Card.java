@@ -15,8 +15,8 @@
 */
 
 public class Card {
-    private Rank rank;
-    private Suit suit;
+    private final Rank rank;
+    private final Suit suit;
     private int value;
     private boolean isAce = false;
     private boolean isOpen = true;

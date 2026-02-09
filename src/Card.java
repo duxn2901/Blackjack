@@ -24,8 +24,8 @@ public class Card {
     public Card(Rank rank, Suit suit) {
         this.rank = rank;
         this.suit = suit;
-        this.value = this.calculateValue();
         if (this.rank == Rank.ACE) this.isAce = true;
+        this.value = this.calculateValue();       
     }
         
     @Override

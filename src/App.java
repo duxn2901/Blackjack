@@ -44,17 +44,25 @@ public class App {
         // System.out.println(newCard);
         // System.out.println(newCard.getValue());
         // System.out.println(newCard.getisAce());
-        Deck deck = new Deck();
-        deck.generate(1);
-        System.out.println(deck);
-        // System.out.println(deck.getTopCard());
-        // deck.addToTop(newCard);
-        // System.out.println(deck.getTopCard());
+        // Deck deck = new Deck();
+        // deck.generate(1);
+        // System.out.println(deck);
+        // // System.out.println(deck.getTopCard());
+        // // deck.addToTop(newCard);
+        // // System.out.println(deck.getTopCard());
         Hand hand = new Hand();
-        hand.addCardToHand(deck.dealTopCard());
-        hand.addCardToHand(deck.dealTopCard());
+        // hand.addCardToHand(new Card(Rank.KING, Suit.SPADES));
+        hand.addCardToHand(new Card(Rank.ACE, Suit.SPADES));
+        hand.addCardToHand(new Card(Rank.THREE, Suit.SPADES));
+        hand.addCardToHand(new Card(Rank.ACE, Suit.SPADES));
+        hand.addCardToHand(new Card(Rank.ACE, Suit.SPADES));
+        hand.addCardToHand(new Card(Rank.QUEEN, Suit.SPADES));
+        hand.addCardToHand(new Card(Rank.TWO, Suit.SPADES));
         System.out.println(hand);
-        hand.updateHandValue(hand.calculateHandValue());
+        hand.calculateHandValue();
         System.out.println(hand.getHandValue());
+        System.out.println(hand.isBusted());
+        System.out.println(hand.getHandValue());
+        
     }
 }

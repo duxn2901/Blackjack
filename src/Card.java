@@ -57,4 +57,8 @@ public class Card {
     public void setIsOpen(boolean state) {
         this.isOpen = state;
     }
+
+    public void setAceValueToOne() {
+        if (this.isAce) this.value = 1;
+    }
 }

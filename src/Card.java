@@ -18,13 +18,13 @@ public class Card {
     private final Rank rank;
     private final Suit suit;
     private int value;
-    private boolean isAce = false;
+    private final boolean isAce;
     private boolean isOpen = true;
 
     public Card(Rank rank, Suit suit) {
         this.rank = rank;
         this.suit = suit;
-        if (this.rank == Rank.ACE) this.isAce = true;
+        this.isAce = this.rank == Rank.ACE;
         this.value = this.calculateCardValue();       
     }
         

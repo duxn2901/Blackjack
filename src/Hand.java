@@ -1,6 +1,10 @@
 
 import java.util.ArrayList;
 
+enum State {
+    ACTIVE, STOOD, BUSTED, DOUBLED, BLACKJACK;
+}
+
 public class Hand {
     private final ArrayList<Card> hand;
     private int handValue;

@@ -8,7 +8,6 @@ import java.util.Collections;
         generate()
             nested loop for each enums Rank, Suit
         printDeck()
-        shuffle()
         addToTop(Card)
             deque.push()
         dealCard(Hand)
@@ -41,4 +40,8 @@ public class Deck {
         Collections.shuffle(tempDeck);
         for (Card card : tempDeck) deck.push(card);
     }
+
+    public void addToTop(Card card) {deck.push(card);}
+
+    public Card getTopCard() {return deck.peek();}
 }

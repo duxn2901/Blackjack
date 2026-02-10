@@ -24,7 +24,8 @@ public class Deck {
         deck = new ArrayDeque<>();
     }
 
-    public String getDeck() {
+    @Override
+    public String toString() {
         String deckString = "";
         for (Card card : deck) deckString += (card + "\t");
         return deckString;
@@ -46,4 +47,6 @@ public class Deck {
     public void addToTop(Card card) {deck.push(card);}
 
     public Card getTopCard() {return deck.peek();}
+
+    public Card dealTopCard() {return deck.pop();}
 }

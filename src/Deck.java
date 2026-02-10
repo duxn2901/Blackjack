@@ -18,7 +18,7 @@ import java.util.Collections;
 */
 
 public class Deck {
-    ArrayDeque<Card> deck;
+    private final ArrayDeque<Card> deck;
 
     public Deck() {
         deck = new ArrayDeque<>();

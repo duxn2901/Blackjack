@@ -8,7 +8,7 @@ public class App {
         // System.out.println(newCard.getisAce());
         Deck deck = new Deck();
         deck.generate(2);
-        deck.printDeck();
+        System.out.println(deck.getDeck());
         System.out.println(deck.getTopCard());
         deck.addToTop(newCard);
         System.out.println(deck.getTopCard());

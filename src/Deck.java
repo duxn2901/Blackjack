@@ -24,8 +24,10 @@ public class Deck {
         deck = new ArrayDeque<>();
     }
 
-    public void printDeck() {
-        for (Card card : deck) System.out.print(card + "\t");
+    public String getDeck() {
+        String deckString = "";
+        for (Card card : deck) deckString += (card + "\t");
+        return deckString;
     }
 
     public void generate(int numberOfDecks) {

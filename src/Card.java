@@ -41,7 +41,7 @@ public class Card {
             rank == Rank.JACK
         ) return 10;
 
-        if (isAce) return 1;
+        if (isAce) return 11;
         
         return Integer.parseInt(rank.getAnnotation());
     }

@@ -1,3 +1,6 @@
+
+import java.util.ArrayList;
+
 /*
     Gameflow:
         Start
@@ -40,34 +43,53 @@
 
 public class Game {
     public static void main(String[] args) throws Exception {
-        // Card newCard = new Card(Rank.QUEEN, Suit.HEARTS);
-        // System.out.println(newCard);
-        // System.out.println(newCard.getValue());
-        // System.out.println(newCard.getisAce());
-        // Deck deck = new Deck();
-        // deck.generate(1);
-        // System.out.println(deck);
-        // // System.out.println(deck.getTopCard());
-        // // deck.addToTop(newCard);
-        // // System.out.println(deck.getTopCard());
-        Hand hand = new Hand();
-        // hand.addCardToHand(new Card(Rank.KING, Suit.SPADES));
-        hand.addCardToHand(new Card(Rank.ACE, Suit.SPADES));
-        hand.addCardToHand(new Card(Rank.JACK, Suit.SPADES));
-        hand.addCardToHand(new Card(Rank.ACE, Suit.SPADES));
-        hand.addCardToHand(new Card(Rank.ACE, Suit.SPADES));
-        // hand.addCardToHand(new Card(Rank.QUEEN, Suit.SPADES));
-        hand.addCardToHand(new Card(Rank.NINE, Suit.SPADES));
-        System.out.println(hand);
-        hand.calculateHandValue();
-        System.out.println(hand.getHandValue());
-        hand.updateState();
-        System.out.println(hand.isBusted());
-        System.out.println(hand.isActive());
-        // System.out.println(hand.isBusted());
-        // System.out.println(hand.getHandValue());
-        
+        Game game = new Game();
+        System.out.println(game.deck);
+        //deal 2 cards to each existing hand
+        for (Player p : game.players) {
+            for (Hand h : p.hands) {
+                game.dealCard(h);
+                game.dealCard(h);
+                h.calculateHandValue();
+                System.out.println(h); //TODO remove
+                System.out.println(h.getHandValue()); //TODO remove
+            }
+        }
+        // System.out.println(game.deck);
     }
 
 
+    //attributes
+    Deck deck;
+    int numberOfDecks;
+
+    Dealer dealer;
+
+    ArrayList<Player> players;
+    int numberOfPlayers;
+
+    int handsPerPlayer;
+
+    Game() {
+        deck = new Deck();
+        numberOfDecks = 1;  //customizeable
+        deck.generate(numberOfDecks);
+        deck.shuffle();
+
+        players = new ArrayList<>();
+        numberOfPlayers = 1; //customizeable
+        for (int i = 0; i < numberOfPlayers; i++) players.add(new Player());    // create x players
+
+        handsPerPlayer = 1; //customizeable
+        //create x hands for each player
+        for (Player player : players) {
+            for (int i = 0; i < handsPerPlayer; i++) {
+                player.hands.add(new Hand());
+            }
+        }
+    }
+
+    void dealCard(Hand hand) {
+        hand.addCardToHand(deck.dealTopCard());
+    }
 }

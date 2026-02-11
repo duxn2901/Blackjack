@@ -1,5 +1,4 @@
 
-import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -18,10 +17,10 @@ import java.util.Collections;
 */
 
 public class Deck {
-    private final ArrayDeque<Card> deck;
+    private final ArrayList<Card> deck;
 
     public Deck() {
-        deck = new ArrayDeque<>();
+        deck = new ArrayList<>();
     }
 
     @Override
@@ -32,21 +31,24 @@ public class Deck {
     }
 
     public void generate(int numberOfDecks) {
-        ArrayList<Card> tempDeck = new ArrayList<>();
         for (int i = 0; i < numberOfDecks; i++) {
             for (Rank rank : Rank.values()) {
                 for (Suit suit : Suit.values()) {
-                    tempDeck.add(new Card(rank, suit));
+                    this.deck.add(new Card(rank, suit));
                 }
             }
         }
-        Collections.shuffle(tempDeck);
-        for (Card card : tempDeck) deck.push(card);
     }
 
-    public void addToTop(Card card) {deck.push(card);}
+    public void shuffle() {Collections.shuffle(this.deck);}
 
-    public Card getTopCard() {return deck.peek();}
+    public void addToTop(Card card) {deck.add(card);}
 
-    public Card dealTopCard() {return deck.pop();}
+    public Card getTopCard() {return deck.get(deck.size()-1);}
+
+    public Card dealTopCard() {
+        Card card = getTopCard();
+        this.deck.remove(deck.size()-1);
+        return card;
+    }
 }

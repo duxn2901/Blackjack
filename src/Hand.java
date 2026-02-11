@@ -1,11 +1,11 @@
 
 import java.util.ArrayList;
 
-enum State {
-    ACTIVE, STOOD, BUSTED, DOUBLED, BLACKJACK;
-}
-
 public class Hand {
+    enum State {
+    ACTIVE, STOOD, BUSTED, DOUBLED, BLACKJACK;
+    }
+
     private final ArrayList<Card> hand;
     private int handValue;
     private int countFullAces;
@@ -52,11 +52,10 @@ public class Hand {
         }
     }
 
-    public boolean isBusted() {return this.handValue > 21;}
+    public boolean isActive() {return this.state == State.ACTIVE;}
+    public boolean isBusted() {return this.state == State.BUSTED;}
 
     public void updateState() {
-        if (isBusted()) this.state = State.BUSTED;
+        if (this.handValue > 21) this.state = State.BUSTED;
     }
-
-    public State getState() {return this.state;}
 }

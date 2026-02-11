@@ -54,8 +54,10 @@ public class Hand {
 
     public boolean isActive() {return this.state == State.ACTIVE;}
     public boolean isBusted() {return this.state == State.BUSTED;}
+    public boolean isBlackjack() {return this.state == State.BLACKJACK;}
 
     public void updateState() {
         if (this.handValue > 21) this.state = State.BUSTED;
+        if (this.handValue == 21 && this.hand.size() == 2) this.state = State.BLACKJACK;
     }
 }

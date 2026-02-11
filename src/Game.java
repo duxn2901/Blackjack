@@ -38,7 +38,7 @@
             return balance
 */
 
-public class App {
+public class Game {
     public static void main(String[] args) throws Exception {
         // Card newCard = new Card(Rank.QUEEN, Suit.HEARTS);
         // System.out.println(newCard);
@@ -53,16 +53,21 @@ public class App {
         Hand hand = new Hand();
         // hand.addCardToHand(new Card(Rank.KING, Suit.SPADES));
         hand.addCardToHand(new Card(Rank.ACE, Suit.SPADES));
-        hand.addCardToHand(new Card(Rank.THREE, Suit.SPADES));
+        hand.addCardToHand(new Card(Rank.JACK, Suit.SPADES));
         hand.addCardToHand(new Card(Rank.ACE, Suit.SPADES));
         hand.addCardToHand(new Card(Rank.ACE, Suit.SPADES));
-        hand.addCardToHand(new Card(Rank.QUEEN, Suit.SPADES));
-        hand.addCardToHand(new Card(Rank.TWO, Suit.SPADES));
+        // hand.addCardToHand(new Card(Rank.QUEEN, Suit.SPADES));
+        hand.addCardToHand(new Card(Rank.NINE, Suit.SPADES));
         System.out.println(hand);
         hand.calculateHandValue();
         System.out.println(hand.getHandValue());
+        hand.updateState();
         System.out.println(hand.isBusted());
-        System.out.println(hand.getHandValue());
+        System.out.println(hand.isActive());
+        // System.out.println(hand.isBusted());
+        // System.out.println(hand.getHandValue());
         
     }
+
+
 }

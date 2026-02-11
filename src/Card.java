@@ -50,6 +50,10 @@ public class Card {
         return this.value;
     }
 
+    public Rank getRank() {
+        return this.rank;
+    }
+
     public boolean getisAce() {
         return this.isAce;
     }

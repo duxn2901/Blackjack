@@ -8,9 +8,11 @@ enum State {
 public class Hand {
     private final ArrayList<Card> hand;
     private int handValue;
+    int countFullAces;
 
     public Hand() {
         hand = new ArrayList<>();
+        countFullAces = 0;
     }
 
     @Override
@@ -26,31 +28,25 @@ public class Hand {
 
     public void calculateHandValue() {
         this.handValue = 0;
-        for (Card card : hand) this.handValue += card.getValue();
+        for (Card card : hand) {
+            if (card.getRank() == Rank.ACE) this.countFullAces++;
+            this.handValue += card.getValue();
+        }
         handleAceValue();
     }
 
     public int getHandValue() {return this.handValue;}
 
 /*
-    if handValue over 21 then check for the first Ace with full 11 value, set it to 1
-    recheck value, break loop if value now less than or equal to 21
-    if no 11-value-aces found then break loop
+    store the number of aces using .calculateHandValue()
+    if handValue goes over 21 and has at least 1 ace then -10 value and -1 ace count
+    TODO decide in the event of a split if the ace count should reset
+    TODO or just delete the hand from the player and create 2 new hands
 */
-    //TODO rework logic
     public void handleAceValue() {
-        while (this.handValue > 21) {
-            boolean foundFullAce = false;
-            for (Card card : hand) {
-                foundFullAce = false;
-                if (card.getValue() == 11) {
-                    card.setAceValueToOne();
-                    calculateHandValue();
-                    foundFullAce = true;
-                    break;
-                }    
-            }
-            if (!foundFullAce) break;
+        while (this.handValue > 21 && this.countFullAces > 0) {
+            this.countFullAces--;
+            this.handValue -= 10;
         }
     }
 }

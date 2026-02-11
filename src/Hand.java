@@ -8,11 +8,13 @@ enum State {
 public class Hand {
     private final ArrayList<Card> hand;
     private int handValue;
-    int countFullAces;
+    private int countFullAces;
+    private State state;
 
     public Hand() {
         hand = new ArrayList<>();
         countFullAces = 0;
+        this.state = State.ACTIVE;
     }
 
     @Override
@@ -49,4 +51,12 @@ public class Hand {
             this.handValue -= 10;
         }
     }
+
+    public boolean isBusted() {return this.handValue > 21;}
+
+    public void updateState() {
+        if (isBusted()) this.state = State.BUSTED;
+    }
+
+    public State getState() {return this.state;}
 }

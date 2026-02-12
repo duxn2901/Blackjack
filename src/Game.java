@@ -45,17 +45,8 @@ public class Game {
     public static void main(String[] args) throws Exception {
         Game game = new Game();
         System.out.println(game.deck);
-        //deal 2 cards to each existing hand
-        for (Player p : game.players) {
-            for (Hand h : p.hands) {
-                game.dealCard(h);
-                game.dealCard(h);
-                h.calculateHandValue();
-                System.out.println(h); //TODO remove
-                System.out.println(h.getHandValue()); //TODO remove
-            }
-        }
-        // System.out.println(game.deck);
+        game.deal2CardsEach();
+        
     }
 
 
@@ -77,10 +68,10 @@ public class Game {
         deck.shuffle();
 
         players = new ArrayList<>();
-        numberOfPlayers = 1; //customizeable
+        numberOfPlayers = 2; //customizeable
         for (int i = 0; i < numberOfPlayers; i++) players.add(new Player());    // create x players
 
-        handsPerPlayer = 1; //customizeable
+        handsPerPlayer = 2; //customizeable
         //create x hands for each player
         for (Player player : players) {
             for (int i = 0; i < handsPerPlayer; i++) {
@@ -91,5 +82,18 @@ public class Game {
 
     void dealCard(Hand hand) {
         hand.addCardToHand(deck.dealTopCard());
+    }
+
+    //deal 2 cards to each existing hand
+    void deal2CardsEach() {
+        for (Player p : this.players) {
+            for (Hand h : p.hands) {
+                this.dealCard(h);
+                this.dealCard(h);
+                h.calculateHandValue();
+                System.out.println(h); //TODO remove
+                System.out.println(h.getHandValue()); //TODO remove
+            }
+        }
     }
 }

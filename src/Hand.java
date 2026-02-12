@@ -60,4 +60,8 @@ public class Hand {
         if (this.handValue > 21) this.state = State.BUSTED;
         if (this.handValue == 21 && this.hand.size() == 2) this.state = State.BLACKJACK;
     }
+
+    public Card getCard(int index) {
+        return this.hand.get(index);
+    }
 }

@@ -17,7 +17,7 @@
 public class Card {
     private final Rank rank;
     private final Suit suit;
-    private int value;
+    private final int value;
     private final boolean isAce;
     private boolean isOpen = true;
 
@@ -62,7 +62,4 @@ public class Card {
         this.isOpen = state;
     }
 
-    public void setAceValueToOne() {
-        if (this.isAce) this.value = 1;
-    }
 }

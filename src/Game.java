@@ -46,7 +46,7 @@ public class Game {
         Game game = new Game();
         System.out.println(game.deck);
         game.deal2CardsEach();
-        
+        System.out.println(game.dealer.hand);       
     }
 
 
@@ -78,6 +78,8 @@ public class Game {
                 player.hands.add(new Hand());
             }
         }
+
+        dealer = new Dealer();
     }
 
     void dealCard(Hand hand) {
@@ -95,5 +97,8 @@ public class Game {
                 System.out.println(h.getHandValue()); //TODO remove
             }
         }
+        this.dealCard(dealer.hand);
+        this.dealCard(dealer.hand);
+        dealer.hand.getCard(1).setIsOpen(false); //set the second card of the dealer to facedown
     }
 }

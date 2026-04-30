@@ -1,3 +1,4 @@
+package model;
 /* 
     attributes
         String rank

@@ -1,3 +1,4 @@
+package model;
 public enum Suit {
         SPADES("of Spades"),
         CLUBS("of Clubs"),

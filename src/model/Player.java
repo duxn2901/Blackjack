@@ -2,7 +2,7 @@ package model;
 import java.util.ArrayList;
 
 public class Player {
-    ArrayList<Hand> hands;
+    public ArrayList<Hand> hands;
     String name;
 
     public Player(String name) {

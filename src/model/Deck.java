@@ -46,9 +46,7 @@ public class Deck {
 
     public Card getTopCard() {return deck.get(deck.size()-1);}
 
-    public Card dealTopCard() {
-        Card card = getTopCard();
-        this.deck.remove(deck.size()-1);
-        return card;
+    public Card dealCard() {  
+        return deck.remove(deck.size()-1);
     }
 }

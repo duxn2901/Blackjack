@@ -1,9 +1,9 @@
 package model;
 public class Dealer{
 
-    Hand hand;
+    public Hand hand;
 
     public Dealer() {
-        hand = new Hand();
+        hand = new Hand(0);
     }
 }

@@ -10,15 +10,20 @@ public class Hand {
     private int handValue;
     private int countFullAces;
     private State state;
+    private int num;
 
-    public Hand() {
+    public Hand(int num) {
         hand = new ArrayList<>();
         countFullAces = 0;
         this.state = State.ACTIVE;
+        this.num = num;
     }
 
     @Override
     public String toString() {
+        return "Hand " + num;
+    }
+    public String showHand() {
         String handString = "";
         for (Card card : hand) handString += card + "\t";
         return handString;
